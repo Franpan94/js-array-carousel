@@ -8,14 +8,51 @@ let listimages = [
     ];
 
 let groupimages = document.getElementById('group-images');
-let image = document.createElement('img');
-    image.setAttribute('src', 'https://cdn.photographycourse.net/wp-content/uploads/2022/04/Portrait-vs-Landscape-Featured-Image-3.jpg');
-    groupimages.append(image);
+let activelement=0;
+let childrenimg=[];
+let obj;
 
   
 for(let i=0; i  < listimages.length; i++) {
     console.log(listimages[i]);
-    let activelement=0;
     
+    let image = document.createElement('img');
+    childrenimg[i]=image;
+     image.setAttribute('src', listimages[i]);
+     image.classList.add('ms_Width');
+    if(i==0){
+     image.classList.add('ms_block');
+    } else{
+        image.classList.add('ms_none');
+    }
+    groupimages.append(image);
+}
+
+let btnnext= document.getElementById('btn-next');
+btnnext.addEventListener('click', function(){
+    obj= childrenimg[activelement];
+    obj.classList.add('ms_none');
+    obj.classList.remove('ms_block');
+    activelement++;
+    obj= childrenimg[activelement];
+    obj.classList.remove('ms_none');
+    obj.classList.add('ms_block');
+})
+
+let btnprew= document.getElementById('btn-prew');
+btnprew.addEventListener('click', function(){
+    obj= childrenimg[activelement];
+    obj.classList.add('ms_none');
+    obj.classList.remove('ms_block');
+    activelement--;
+    obj= childrenimg[activelement];
+    obj.classList.remove('ms_none');
+    obj.classList.add('ms_block');
+})
+
+
+
+if(activelement==listimages.length){
+    activelement=0;
 }
 
