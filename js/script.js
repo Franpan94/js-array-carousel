@@ -15,7 +15,7 @@ let obj;
   
 for(let i=0; i  < listimages.length; i++) {
     console.log(listimages[i]);
-    
+
     let image = document.createElement('img');
     childrenimg[i]=image;
      image.setAttribute('src', listimages[i]);
@@ -61,7 +61,4 @@ btnprew.addEventListener('click', function(){
 
 
 
-if(activelement==listimages.length){
-    activelement=0;
-}
 
