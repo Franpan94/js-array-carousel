@@ -20,7 +20,7 @@ for(let i=0; i  < listimages.length; i++) {
     childrenimg[i]=image;
      image.setAttribute('src', listimages[i]);
      image.classList.add('ms_Width');
-    if(i==0){
+    if(i==activelement){
      image.classList.add('ms_block');
     } else{
         image.classList.add('ms_none');
@@ -34,9 +34,14 @@ btnnext.addEventListener('click', function(){
     obj.classList.add('ms_none');
     obj.classList.remove('ms_block');
     activelement++;
-    obj= childrenimg[activelement];
-    obj.classList.remove('ms_none');
-    obj.classList.add('ms_block');
+    if(activelement==listimages.length){
+        activelement=0;
+    } else{
+        obj= childrenimg[activelement];
+        obj.classList.remove('ms_none');
+        obj.classList.add('ms_block');
+    }
+    
 })
 
 let btnprew= document.getElementById('btn-prew');
@@ -45,9 +50,13 @@ btnprew.addEventListener('click', function(){
     obj.classList.add('ms_none');
     obj.classList.remove('ms_block');
     activelement--;
-    obj= childrenimg[activelement];
-    obj.classList.remove('ms_none');
-    obj.classList.add('ms_block');
+    if(activelement==-1){
+        activelement=listimages.length-1;
+    } else{
+        obj= childrenimg[activelement];
+        obj.classList.remove('ms_none');
+        obj.classList.add('ms_block');
+    }
 })
 
 
